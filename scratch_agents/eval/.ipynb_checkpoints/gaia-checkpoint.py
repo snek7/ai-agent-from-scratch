@@ -84,27 +84,11 @@ async def evaluate_gaia_single(problem: dict, model: str) -> dict:
             "error": str(e),
         }
 
-# async def run_experiment(
-#     problems: list[dict],
-#     models: list[str],
-# ) -> dict[str, list]:
-#     """Evaluate all models on all problems."""
-#     tasks = [
-#         evaluate_gaia_single(problem, model)
-#         for problem in problems
-#         for model in models
-#     ]
-
-#     all_results = await tqdm_asyncio.gather(*tasks)
-
-#     # Group results by model
-#     results = {model: [] for model in models}
-#     for result in all_results:
-#         results[result["model"]].append(result)
-
-#     return results
-
-async def run_experiment(problems: list[dict], models: list[str]) -> dict[str, list]:
+async def run_experiment(
+    problems: list[dict],
+    models: list[str],
+) -> dict[str, list]:
+    """Evaluate all models on all problems."""
     tasks = [
         evaluate_gaia_single(problem, model)
         for problem in problems
@@ -113,6 +97,7 @@ async def run_experiment(problems: list[dict], models: list[str]) -> dict[str, l
 
     all_results = await tqdm_asyncio.gather(*tasks)
 
+    # Group results by model
     results = {model: [] for model in models}
     for result in all_results:
         results[result["model"]].append(result)

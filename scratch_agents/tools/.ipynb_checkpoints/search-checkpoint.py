@@ -1,10 +1,7 @@
 from tavily import TavilyClient
 import os
 
-from .base import tool
 
-
-@tool
 def search_web(
     query: str,
     max_results: int = 5,

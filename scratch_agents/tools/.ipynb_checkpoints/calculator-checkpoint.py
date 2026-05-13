@@ -1,6 +1,3 @@
-from .base import tool
-
-@tool
 def calculator(operator: str, first_number: float, second_number: float) -> float:
     """Perform basic arithmetic operations.
 

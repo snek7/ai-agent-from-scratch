@@ -383,7 +383,7 @@ class Agent:
         # NEW: Add memory tool
         if self.memory_manager:
             from scratch_agents.tools.memory_tool import MemoryTool
-            tools.append(MemoryTool(self.memory_manager))
+            tools.append(MemoryTool())
 
         return tools
 
